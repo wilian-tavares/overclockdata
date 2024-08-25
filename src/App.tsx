@@ -38,6 +38,9 @@ function App() {
   function handlePerfil(cpu: string, voltagem: string, clock: string, temperatura: string, success: string) {
 
     const newPerfil: Perfil = { cpu, voltagem, clock, temperatura, success };
+    if(voltagem !== "" && clock !== "" && temperatura !== "" && success !== "")
+
+
     setAllPerfil(perfils => [...perfils, newPerfil]);
 
     setCpu("");
