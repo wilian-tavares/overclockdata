@@ -38,7 +38,7 @@ function App() {
     const newPerfil: Perfil = { cpu, voltagem, clock, temperatura, estavel };
 
     if (edit && editIndex !== null) {
-      const updatedPerfils = allPerfil.map((perfil, index) => 
+      const updatedPerfils = allPerfil.map((perfil, index) =>
         index === editIndex ? newPerfil : perfil
       );
       setAllPerfil(updatedPerfils);
@@ -100,15 +100,20 @@ function App() {
         </div>
 
         {allPerfil.map((perfil, index) => (
-          <article key={index} className='lista-perfil'>
-            <p>{`CPU: ${perfil.cpu}`}</p>
-            <p>{`Volts: ${perfil.voltagem}`}</p>
-            <p>{`Clock: ${perfil.clock}`}</p>
-            <p>{`Temperatura: ${perfil.temperatura}`}</p>
-            <p>{`Estável: ${perfil.estavel}`}</p>
-            <button className='button-editar' onClick={() => handleEdit(index)}>Editar</button>
-            <button  className='button-apagar' onClick={() => handleDelete(index)}>Deletar</button>
-          </article>
+          <div key={index} className='shield-lista'>
+            <article  className='lista-perfil'>
+              <p>{`CPU: ${perfil.cpu}`}</p>
+              <p>{`Volts: ${perfil.voltagem}`}</p>
+              <p>{`Clock: ${perfil.clock}`}</p>
+              <p>{`Temperatura: ${perfil.temperatura}`}</p>
+              <p>{`Estável: ${perfil.estavel}`}</p>
+            </article>
+            <div className='shield-button'>
+              <button className='button-editar' onClick={() => handleEdit(index)}>Editar</button>
+              <button className='button-apagar' onClick={() => handleDelete(index)}>Deletar</button>
+            </div>
+
+          </div>
         ))}
       </main>
     </div>
