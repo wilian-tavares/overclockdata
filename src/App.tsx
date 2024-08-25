@@ -29,19 +29,32 @@ function App() {
     estavel: string;
   }
 
-  // const [allPerfil, setAllPerfil] = useState([]);
+
   const [allPerfil, setAllPerfil] = useState<Perfil[]>([]);
 
+
+  useEffect(() => {
+    const confSalvas = localStorage.getItem("overclock");
+    if (confSalvas) {
+      setAllPerfil(JSON.parse(confSalvas));
+    }
+  }, []);
+  
+  useEffect(() => {
+    if (allPerfil.length > 0) {
+      localStorage.setItem("overclock", JSON.stringify(allPerfil));
+    }
+  }, [allPerfil]);
 
 
 
   function handlePerfil(cpu: string, voltagem: string, clock: string, temperatura: string, estavel: string) {
 
     const newPerfil: Perfil = { cpu, voltagem, clock, temperatura, estavel };
-    if(voltagem !== "" && clock !== "" && temperatura !== "" && estavel !== "")
+    if (voltagem !== "" && clock !== "" && temperatura !== "" && estavel !== "")
 
 
-    setAllPerfil(perfils => [...perfils, newPerfil]);
+      setAllPerfil(perfils => [...perfils, newPerfil]);
 
     setCpu("");
     setVoltagem("");
@@ -66,7 +79,7 @@ function App() {
           <input className='input-text' type='input' value={temperatura} onChange={(temperatura) => setTemperatura(temperatura.target.value)} placeholder='Informe Temperatura Máxima' />
 
 
-            <p>O Overclock ficou estável?</p>
+          <p>O Overclock ficou estável?</p>
           <div className='shield-radio'>
             <label >
               SIM
