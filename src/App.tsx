@@ -5,10 +5,10 @@ import './App.css'
 function App() {
 
 
-  const [cpu, setCpu] = useState("Processador");
-  const [voltagem, setVoltagem] = useState("");
-  const [clock, setClock] = useState("");
-  const [temperatura, setTemperatura] = useState("");
+  const [cpu, setCpu] = useState("Ryzen 5 3600X");
+  const [voltagem, setVoltagem] = useState("1.37");
+  const [clock, setClock] = useState("3.800");
+  const [temperatura, setTemperatura] = useState("75");
   const [estavel, setEstavel] = useState("");
 
 
@@ -39,7 +39,7 @@ function App() {
       setAllPerfil(JSON.parse(confSalvas));
     }
   }, []);
-  
+
   useEffect(() => {
     if (allPerfil.length > 0) {
       localStorage.setItem("overclock", JSON.stringify(allPerfil));
@@ -51,19 +51,30 @@ function App() {
   function handlePerfil(cpu: string, voltagem: string, clock: string, temperatura: string, estavel: string) {
 
     const newPerfil: Perfil = { cpu, voltagem, clock, temperatura, estavel };
-    if (voltagem !== "" && clock !== "" && temperatura !== "" && estavel !== "")
+    if (voltagem !== "" && clock !== "" && estavel !== "")
 
+    setAllPerfil(perfils => [...perfils, newPerfil]);
 
-      setAllPerfil(perfils => [...perfils, newPerfil]);
-
-    setCpu("");
+    setCpu("Ryzen 5 3600X");
     setVoltagem("");
     setClock("");
     setTemperatura("");
     setEstavel("");
-
-    console.log(allPerfil)
   }
+
+  // function handleEdit(index: number){
+  //  // console.log(index);
+  //   const findPerfil = allPerfil.findIndex(perfil => perfil )
+  //   console.log(findPerfil)
+
+  
+  // }
+
+  function handleDelete(index: number) {
+    const updatedPerfil = allPerfil.filter((_, i) => i !== index);
+    setAllPerfil(updatedPerfil);
+  }
+  
 
   return (
     <div className='container'>
@@ -98,13 +109,18 @@ function App() {
         </div>
 
         {allPerfil.map((perfil, index) => (
-          <article key={index} className='lista-perfil'>
-            <p>{`CPU: ${perfil.cpu}`} | </p>
-            <p>{`Volts: ${perfil.voltagem} | `}</p>
-            <p>{`Clock: ${perfil.clock}Mhz | `}</p>
-            <p>{`temperatura: ${perfil.temperatura} | `}</p>
-            <p>{`Estável: ${perfil.estavel} | `}</p>
-          </article>
+          <>
+            <article key={index} className='lista-perfil'>
+              <p>{`CPU: ${perfil.cpu}`}</p>
+              <p>{`Volts: ${perfil.voltagem}`}</p>
+              <p>{`Clock: ${perfil.clock}Mhz`}</p>
+              <p>{`temperatura: ${perfil.temperatura}`}</p>
+              <p>{`Estável: ${perfil.estavel}`}</p>
+              {/* <button onClick={() => handleEdit(index)} className='button-editar'>Editar</button> */}
+              <button onClick={() => handleDelete(index)} className='button-apagar'>Apagar</button>
+
+            </article>
+          </>
         ))}
 
 
