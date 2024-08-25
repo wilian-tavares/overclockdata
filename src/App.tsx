@@ -9,7 +9,7 @@ function App() {
   const [voltagem, setVoltagem] = useState("");
   const [clock, setClock] = useState("");
   const [temperatura, setTemperatura] = useState("");
-  const [success, setSuccess] = useState("");
+  const [estavel, setEstavel] = useState("");
 
 
   const [perfil, setPerfil] = useState({
@@ -17,7 +17,7 @@ function App() {
     voltagem: '',
     clock: '',
     temperatura: '',
-    success: '',
+    estavel: '',
 
   })
 
@@ -26,7 +26,7 @@ function App() {
     voltagem: string;
     clock: string;
     temperatura: string;
-    success: string;
+    estavel: string;
   }
 
   // const [allPerfil, setAllPerfil] = useState([]);
@@ -35,10 +35,10 @@ function App() {
 
 
 
-  function handlePerfil(cpu: string, voltagem: string, clock: string, temperatura: string, success: string) {
+  function handlePerfil(cpu: string, voltagem: string, clock: string, temperatura: string, estavel: string) {
 
-    const newPerfil: Perfil = { cpu, voltagem, clock, temperatura, success };
-    if(voltagem !== "" && clock !== "" && temperatura !== "" && success !== "")
+    const newPerfil: Perfil = { cpu, voltagem, clock, temperatura, estavel };
+    if(voltagem !== "" && clock !== "" && temperatura !== "" && estavel !== "")
 
 
     setAllPerfil(perfils => [...perfils, newPerfil]);
@@ -47,7 +47,7 @@ function App() {
     setVoltagem("");
     setClock("");
     setTemperatura("");
-    setSuccess("");
+    setEstavel("");
 
     console.log(allPerfil)
   }
@@ -66,20 +66,20 @@ function App() {
           <input className='input-text' type='input' value={temperatura} onChange={(temperatura) => setTemperatura(temperatura.target.value)} placeholder='Informe Temperatura Máxima' />
 
 
-            <p>O Overclock ficous estável?</p>
+            <p>O Overclock ficou estável?</p>
           <div className='shield-radio'>
             <label >
               SIM
-              <input className='input-radio' type='radio' value="SIM" checked={success === 'SIM'} onChange={() => setSuccess("SIM")} placeholder='Informe Processador' />
+              <input className='input-radio' type='radio' value="SIM" checked={estavel === 'SIM'} onChange={() => setEstavel("SIM")} placeholder='Informe Processador' />
             </label>
 
             <label>
               NÃO
-              <input className='input-radio' type='radio' value="NÃO" checked={success === 'NÃO'} onChange={() => setSuccess("NÃO")} placeholder='Informe Processador' />
+              <input className='input-radio' type='radio' value="NÃO" checked={estavel === 'NÃO'} onChange={() => setEstavel("NÃO")} placeholder='Informe Processador' />
             </label>
 
           </div>
-          <button className='button-cadastrar' onClick={() => handlePerfil(cpu, voltagem, clock, temperatura, success)}>Cadastrar</button>
+          <button className='button-cadastrar' onClick={() => handlePerfil(cpu, voltagem, clock, temperatura, estavel)}>Cadastrar</button>
 
 
         </div>
@@ -90,7 +90,7 @@ function App() {
             <p>{`Volts: ${perfil.voltagem} | `}</p>
             <p>{`Clock: ${perfil.clock}Mhz | `}</p>
             <p>{`temperatura: ${perfil.temperatura} | `}</p>
-            <p>{`Estável: ${perfil.success} | `}</p>
+            <p>{`Estável: ${perfil.estavel} | `}</p>
           </article>
         ))}
 
