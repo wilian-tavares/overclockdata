@@ -1,6 +1,69 @@
 
+body {
+    background-color: aqua;
+}
+
 .container {
-    background-color: aliceblue;
+    
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
+}
+.container .title {
+    margin-bottom: 20px;
+}
+header {
+    background-color: brown;
+    width: 100%;
+    height: 70px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+
+    /* height: calc(100vh - 70px); */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;   
+ 
+}
+
+.area-cadastro {
+    width: 80%;
+    max-width: 300px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+input, button {
+    height: 40px;
+    cursor: pointer;
+    border-radius: 12px;
+    padding-left: 10px;
+    font-style: italic;
+}
+.lista-perfil {
+    margin-top: 10px;
+    display: flex;
+    background-color: #FFF;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
+.shield-radio {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
