@@ -67,3 +67,12 @@ input, button {
     align-items: center;
     justify-content: space-around;
 }
+
+@media (max-width: 700px) {
+    .lista-perfil {
+        flex-direction: column;
+        height: 100%;
+        width: 80%;
+        gap: 10px;
+    }
+}
