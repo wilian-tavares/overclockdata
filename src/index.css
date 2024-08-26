@@ -85,6 +85,17 @@ input, button {
     width:  100%;
     justify-content: space-around;
 }
+.success {
+    background-color: green;
+    color: #FFF;
+}
+.caution {
+    background-color: yellow;
+}
+.danger {
+    background-color: red;
+    color: #FFF;
+}
 
 .button-editar {
     background-color: yellow;
@@ -104,7 +115,6 @@ input, button {
     border-radius: 12px;
     color: #FFF;
     font-style: italic;
-
 }
 .shield-radio {
     display: flex;

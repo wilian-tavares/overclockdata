@@ -11,6 +11,11 @@ function App() {
   const [edit, setEdit] = useState(false);
   const [editIndex, setEditIndex] = useState<number | null>(null);
 
+
+  let listaPerfil = document.getElementsByClassName("lista-perfil");
+
+
+
   interface Perfil {
     cpu: string;
     voltagem: string;
@@ -101,7 +106,7 @@ function App() {
 
         {allPerfil.map((perfil, index) => (
           <div key={index} className='shield-lista'>
-            <article  className='lista-perfil'>
+            <article className={`lista-perfil ${perfil.estavel === "SIM" ? "success" : perfil.estavel === "NÃO" ? "danger" : perfil.estavel === null ? "caution" : ""}`}>
               <p>{`CPU: ${perfil.cpu}`}</p>
               <p>{`Volts: ${perfil.voltagem}`}</p>
               <p>{`Clock: ${perfil.clock}`}</p>
