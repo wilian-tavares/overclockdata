@@ -12,10 +12,6 @@ function App() {
   const [editIndex, setEditIndex] = useState<number | null>(null);
 
 
-  let listaPerfil = document.getElementsByClassName("lista-perfil");
-
-
-
   interface Perfil {
     cpu: string;
     voltagem: string;
